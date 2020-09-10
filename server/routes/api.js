@@ -1,5 +1,5 @@
 const express = require('express')
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 const City = require('../model/City')
 const axios = require('axios')
 const { default: Axios } = require('axios')
@@ -33,19 +33,23 @@ router.get('/cities',function(req,res){
 })
 
 router.post('/city/:cityName',function(req,res){
-    const city = req.body
+    // const city = JSON.parse(JSON.stringify(req.body)) 
+    const city = req.body // * city is not the same as being sent (from model.js->35)
+    console.log("city",city)
     const name = city.name
-    const temp = city.name.temp
-    const condition = city.condition
-    const conditionPic = city.conditionPic
-    const c = new City({
-        name,
-        temp,
-        condition,
-        conditionPic
-    })
-    c.save()
-    .then(res.send(`${name} has been saved to the DB`))
+    // const temp = city.main.temp
+    // console.log("temp",city.main)
+    // const condition = city.condition
+    // const conditionPic = city.conditionPic
+    // const c = new City({
+    //     name,
+    //     temp,
+        // condition,
+        // conditionPic
+    // })
+    res.end()
+    // c.save()
+    // .then(res.send(`${name} has been saved to the DB`))
 })
 
 router.delete('/city/:cityName',function(req,res){

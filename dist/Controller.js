@@ -7,14 +7,15 @@
 
 const loadPage = async function(){
     await tempManager.getDataFromDB()
-    console.log(tempManager.cityData)
-    renderer.renderData(tempManager.cityData[0])
+    console.log("first log fo data array",tempManager.cityData)
+    renderer.renderData(tempManager.cityData)
 }
 
 loadPage()
 
 const handleSearch = async function(cityName){
     await tempManager.getCityData(cityName)
+    console.log("city name to serch",cityName)
     renderer.renderData(tempManager.cityData)
 }
 
