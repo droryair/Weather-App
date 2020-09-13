@@ -2,10 +2,12 @@
 <html lang="en">
 
     <head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
         <link rel = "stylesheet", href ="style.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Kufam&family=Lobster&display=swap" rel="stylesheet">
+        
         <title>Document</title>
     </head>
 
@@ -26,7 +28,9 @@
         {{#each cities}}
         <div class = "city-info">
             <div class = "city-name">{{name}}</div>
-            <div class= "city-temp"> {{temp}}</div>
+            <div class="city-condition">{{condition}}</div>
+            <div class= "city-temp">  <img src ="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png"> {{temp}}°C  </div>
+            <span> <i class="fas fa-sync-alt refresh-city"></i> </span>
             <button class = "save-city" >+</button>
             <button class = "remove-city">-</button>
         </div>

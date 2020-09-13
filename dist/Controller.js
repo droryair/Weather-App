@@ -1,13 +1,6 @@
-// const renderer = require('./View')
-// const data = require('./Model')
-// const { deflateRawSync } = require('zlib')
-
-// renderer methods: renderData(cities)
-//data methods:getDataFromDB(),  getCityData(cityName),  saveCity(cityName) , removeCity(cityName)
 
 const loadPage = async function(){
     await tempManager.getDataFromDB()
-    console.log("first log for data array",tempManager.cityData)
     renderer.renderData(tempManager.cityData)
 }
 
@@ -21,6 +14,7 @@ const handleSearch = async function(cityName){
 $('#search-button').on('click',function(){
     const cityName = $('#search-input').val()
     handleSearch(cityName)
+    $('#search-input').val("")
 })
 
 
@@ -35,3 +29,12 @@ $('#cities-container').on('click','.remove-city', function(){
     const cityName = $(this).siblings('.city-name').text()
     tempManager.removeCity(cityName)
 })
+
+$('#cities-container').on('click', '.refresh-city', function () {
+    const cityName = $(this).parent().siblings('.city-name').text()
+    tempManager.updateCity(cityName).then(city => {
+        renderer.renderData(tempManager.cityData)
+    })
+
+})
+
