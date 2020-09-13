@@ -1,0 +1,81 @@
+body{
+    display:grid;
+    grid-template-areas: 
+    /*h-search bar c-current location, r-results(cities)*/
+    "h h h"
+    "c c c"
+    "c c c"
+    "c c c"
+    "r r r" ;
+    background-color: #1d8db9;
+    height:100%;
+}
+#search-container{
+    grid-area: h;
+    width:100% ;
+    /* background-color: #1d8db9; */
+
+}
+
+#cities-container{
+    background-color: #197aa0;
+    margin-top:10px;
+    grid-area: r;
+    height: 100%;
+    width:100vw;
+    /* padding: 10px; */
+    /* background-color: #48bfe3; */
+    display:grid;
+    grid-template-columns: 1fr;
+    border-radius:40px;
+
+}
+
+.city-info{
+    /* background-color: #4ea8de; */
+    margin: 10px;
+    height: auto;
+    width: 95%;
+    /* display:grid;
+    grid-template-columns: 1fr,10fr;
+    grid-template-rows: 1fr; */
+    
+}
+#search-input{
+    float: left;
+    width:80vw;
+    padding:3px;
+    margin-left:10px;
+    /* outline:none; */
+    border-color: #7400b8;
+    background:none;
+    border-radius:40px;
+
+}
+#search-button{
+    float:right;
+    padding:3px;
+    margin-right:10px;
+    width: 10vw;
+    font-size: 2vw;
+    border-radius:40px;
+    background-color: #7400b8;
+}
+.city-name{
+    font-size: 4vw;
+    font-family: 'Lobster', cursive;
+}
+.city-temp{
+    font-size: 4vw;
+    font-family: 'Kufam', cursive;
+}
+.save-city{
+    background-color: #232ed1;
+    border-radius: 100%;
+}
+.remove-city{
+    background-color: #6930c3;
+    border-radius: 100%;
+}
+
+

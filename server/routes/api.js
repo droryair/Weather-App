@@ -16,11 +16,12 @@ router.get('/city/:cityName',function(req,res){
         const weatherApi = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}`
         axios.get(weatherApi)
         .then(response=>{
-            // console.log(response)
-            res.send(response.data)
+            const name = response.data.name
+            const temp = response.data.main.temp
+            const neededData={name,temp}
+            res.send(neededData)
         })
         .catch(err=>{
-            // console.log(err)
             res.send(err)
         })
 
@@ -33,33 +34,27 @@ router.get('/cities',function(req,res){
 })
 
 router.post('/city/:cityName',function(req,res){
-    // const city = JSON.parse(JSON.stringify(req.body)) 
-    const city = req.body // * city is not the same as being sent (from model.js->35)
-    console.log("city",city)
+    const city =req.body 
     const name = city.name
-    // const temp = city.main.temp
-    // console.log("temp",city.main)
-    // const condition = city.condition
-    // const conditionPic = city.conditionPic
-    // const c = new City({
-    //     name,
-    //     temp,
-        // condition,
-        // conditionPic
-    // })
-    res.end()
-    // c.save()
-    // .then(res.send(`${name} has been saved to the DB`))
+    const temp = city.temp
+    const condition = city.condition
+    const conditionPic = city.conditionPic
+    const c = new City({
+        name,
+        temp,
+        condition,
+        conditionPic
+    })
+    // res.send(c)
+    c.save()
+    .then(res.send(`${name} has been saved to the DB`))
 })
 
 router.delete('/city/:cityName',function(req,res){
     const cityName = req.params.cityName
-    City.remove({name:cityName})
+    City.deleteOne({name:cityName})
     .then(res.send(`${cityName} has been removed form the DB`))
 })
-
-
-
 
 
 module.exports = router

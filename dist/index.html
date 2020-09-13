@@ -2,26 +2,32 @@
 <html lang="en">
 
     <head>
+        <link rel = "stylesheet", href ="style.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Kufam&family=Lobster&display=swap" rel="stylesheet">
         <title>Document</title>
     </head>
 
     <body>
-        <div id = "search-container">
-            <input id = "search-input">
-            <button id = "search-button">search</button>
+
+        <div id="page">
+            <div id="search-container">
+                <input id="search-input" placeholder="Search for a city">
+                <button id="search-button">search</button>
+            </div>
+        
+            <div id="cities-container"></div>
         </div>
 
-        <div id = "cities-container"></div>
 
         <!--  -->
     <script id="cities-template" type="text/x-handlebars-template">
         {{#each cities}}
         <div class = "city-info">
             <div class = "city-name">{{name}}</div>
-            <div> {{main.temp}}</div>
-            <button class = "save-city">+</button>
+            <div class= "city-temp"> {{temp}}</div>
+            <button class = "save-city" >+</button>
             <button class = "remove-city">-</button>
         </div>
         {{/each}}

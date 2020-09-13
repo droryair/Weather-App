@@ -8,19 +8,10 @@ class TempManager{
         this.cityData=[]
     }
 
-    // Internal Methods:
-    // addCityToDB(city){
-    //     $.post('/city',c,function(response){
-    //         console.log(response)
-    //     })
-    // }
-
-
-    // External Methods
     async getDataFromDB(){
       const cities = await $.get('/cities')
       cities.forEach(c=>{
-          console.log("cities from DB",c)
+
           this.cityData.push(c)})
            
     }
@@ -32,39 +23,28 @@ class TempManager{
         }))
     }
 
-    saveCity(cityName){
-        const city = this.cityData.find(c=>c.name==cityName)
-        this.cityData.push(city)
-        console.log(`Model-saveCity cityName: ${cityName}`)
-        console.log("model city",city)
-        $.post(`/city/${cityName}`,city,function(res){
-            console.log(`Model-saveCity res: ${res}`)
+    saveCity(cityName) {
+        const city = this.cityData.find(c => c.name == cityName)
+        $.post(`/city/${cityName}`,city, function (res) {
         })
     }
 
     removeCity(cityName){
-        const city = this.cityData.find(c=>c.name=== cityName)
-        const i = this.cityData.findIndex(city)
-
+        const cityArray = this.cityData
+        const city = cityArray.find(c=>c.name=== cityName)
         $.ajax({
-            method:"DELETE",
+            type:"DELETE",
             url:`/city/${cityName}`,
-            success:()=>{
-                this.cityDaya.splice(i,1)
+            success:(res)=>{
+                const i = cityArray.indexOf(city)
+                cityArray.splice(i,1)
                 console.log(`Model-removeCity res: ${res}`)
             },
             error:(xhr,text,err)=>{
-                console.log(err)
+                alert(err)
             }
         })
-        // $.remove(`/city/${cityName}`,city,function(res){
-        //     const i = cityData.findIndex(city)
-        //     cityDaya.splice(i,1)
-        //     console.log(`Model-removeCity res: ${res}`)
-        // })
     }
-
 }
 
 const tempManager = new TempManager()
-// module.exports = tempManager
