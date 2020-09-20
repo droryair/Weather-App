@@ -12,7 +12,7 @@ class TempManager{
         }
    
         
-        async getCityData(cityName){  
+        async getCityData(cityName){
             await $.get(`/city/${cityName}`,(city=>{
                 this.cityData.push(city) 
         }))
@@ -32,6 +32,7 @@ class TempManager{
         })
         const i = cityArray.indexOf(city)
         cityArray.splice(i, 1)
+        alert(res)
     }
 
     async updateCity(cityName) {

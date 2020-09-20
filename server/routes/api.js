@@ -27,7 +27,6 @@ router.get('/city/:cityName',function(req,res){
         .catch(err=>{
             res.send(err)
         })
-
 })
 
 router.get('/cities',function(req,res){
@@ -83,6 +82,8 @@ router.put('/city/:cityName',function(req,res){
         City.findOneAndUpdate(filter,updatedCity)  
         res.send(updatedCity)
     })
+
+  
 })
 
 

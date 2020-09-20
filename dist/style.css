@@ -54,23 +54,24 @@ body{
     margin-right:10px;
     width: fit-content;
     height:25px;
-    font-size: 2vw;
+    font-size: 1vw;
+    text-justify: center;
     border-radius:40px;
     background-color: #7400b8;
 }
 
 .city-name{
-    font-size: 4vw;
+    font-size: 2vw;
     font-family: 'Lobster', cursive;
 }
 
 .city-condition{
-    font-size: 3.5vw;
+    font-size: 1.5vw;
     font-family: 'Lobster', cursive;
 }
 
 .city-temp{
-    font-size: 4vw;
+    font-size: 1.5vw;
     font-family: 'Kufam', cursive;
     text-justify: auto;
 }
@@ -93,6 +94,6 @@ body{
 }
 
 img{
-    height: 15%;
-    width: 15%;
+    height: 5%;
+    width: 5%;
 }
